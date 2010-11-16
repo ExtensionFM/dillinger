@@ -11,13 +11,13 @@ import zmq
 import zmqstream
 
 
-class ZMQMixin(tornado.web.RequestHandler):
+class ZMQMixin():
     def zmq_send_msg(self, msg, callback):
         msg_id = self.application.zmq_send_msg(msg, callback)
         
         
 
-class MainHandler(ZMQMixin):
+class MainHandler(ZMQMixin, tornado.web.RequestHandler):
     @tornado.web.asynchronous
     def get(self):
         msg = 'yt?'
